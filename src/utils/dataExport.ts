@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as FileSystem from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
-import { quizQuestions } from '../constants/quizData';
+import { quizQuestions } from '../constants/zoco/quizData';
 
 interface Score {
   instagramHandle: string;

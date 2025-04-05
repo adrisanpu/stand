@@ -13,7 +13,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
 
 import { RootStackParamList } from '../types';
-import { COLORS, SIZES } from '../constants/theme';
+import { COLORS, SIZES } from '../constants/zoco/theme';
 import CustomButton from '../components/CustomButton';
 
 type RouletteScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Roulette'>;

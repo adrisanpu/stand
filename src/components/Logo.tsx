@@ -9,7 +9,7 @@ const Logo: React.FC<LogoProps> = ({ size = 200 }) => {
   return (
     <View style={[styles.container, { width: size, height: size }]}>
       <Image
-        source={require('../../assets/logo.png')}
+        source={require('../../assets/logo_zoco.png')}
         style={[styles.image, { width: size, height: size }]}
         resizeMode="contain"
       />

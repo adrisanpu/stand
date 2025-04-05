@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { RootStackParamList } from '../types';
-import { COLORS, SIZES } from '../constants/theme';
+import { COLORS, SIZES } from '../constants/zoco/theme';
 import CustomButton from '../components/CustomButton';
 
 type ResultsScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Results'>;

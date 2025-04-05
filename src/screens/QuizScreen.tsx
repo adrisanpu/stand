@@ -4,8 +4,8 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { LinearGradient } from 'expo-linear-gradient';
 import { RootStackParamList } from '../types';
-import { quizQuestions } from '../constants/quizData';
-import { COLORS, SIZES, FONTS } from '../constants/theme';
+import { quizQuestions } from '../constants/zoco/quizData';
+import { COLORS, SIZES, FONTS } from '../constants/zoco/theme';
 
 type QuizScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Quiz'>;
 

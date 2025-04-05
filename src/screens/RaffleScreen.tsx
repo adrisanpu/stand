@@ -13,7 +13,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { RootStackParamList } from '../types';
-import { COLORS, SIZES } from '../constants/theme';
+import { COLORS, SIZES } from '../constants/zoco/theme';
 import CustomButton from '../components/CustomButton';
 
 type RaffleScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Raffle'>;

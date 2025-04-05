@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, ViewStyle, TextStyle } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { COLORS, SIZES, SHADOWS } from '../constants/theme';
+import { COLORS, SIZES, SHADOWS } from '../constants/zoco/theme';
 
 interface CustomButtonProps {
   title: string;

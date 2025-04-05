@@ -10,7 +10,7 @@ import ResultsScreen from './src/screens/ResultsScreen';
 import LeaderboardScreen from './src/screens/LeaderboardScreen';
 import RaffleScreen from './src/screens/RaffleScreen';
 import RouletteScreen from './src/screens/RouletteScreen';
-import { COLORS } from './src/constants/theme';
+import { COLORS } from './src/constants/zoco/theme';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

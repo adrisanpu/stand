@@ -7,7 +7,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 
 import { RootStackParamList } from '../types';
-import { COLORS, SIZES } from '../constants/theme';
+import { COLORS, SIZES } from '../constants/zoco/theme';
 import CustomButton from '../components/CustomButton';
 import Logo from '../components/Logo';
 import { exportGameData } from '../utils/dataExport';
@@ -223,7 +223,7 @@ const LoginScreen = () => {
 
       <View style={styles.content}>
         <Logo size={200} />
-        <Text style={styles.title}>Spicy Tamarind Quiz</Text>
+        <Text style={styles.title}>Zoco Salamandra Quiz</Text>
         <Text style={styles.subtitle}>Test your knowledge and win prizes!</Text>
         
         <View style={styles.inputContainer}>

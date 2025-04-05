@@ -16,7 +16,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 
 import { RootStackParamList } from '../types';
-import { COLORS, SIZES } from '../constants/theme';
+import { COLORS, SIZES } from '../constants/zoco/theme';
 import CustomButton from '../components/CustomButton';
 
 interface Score {
