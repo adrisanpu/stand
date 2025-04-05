@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#E3000B" />
+  
+  <!-- Tamarind shape -->
+  <path d="M100 30C70 30 45 55 45 85C45 115 70 140 100 140C130 140 155 115 155 85C155 55 130 30 100 30Z" fill="#F66A0A"/>
+  
+  <!-- Spicy flames -->
+  <path d="M85 70C85 50 95 40 100 35C105 40 115 50 115 70C115 90 105 100 100 95C95 100 85 90 85 70Z" fill="#F9C80E"/>
+  <path d="M65 80C65 60 75 50 80 45C85 50 95 60 95 80C95 100 85 110 80 105C75 110 65 100 65 80Z" fill="#F9C80E"/>
+  <path d="M105 80C105 60 115 50 120 45C125 50 135 60 135 80C135 100 125 110 120 105C115 110 105 100 105 80Z" fill="#F9C80E"/>
+  
+  <!-- Quiz elements -->
+  <circle cx="60" cy="150" r="15" fill="#FFFFFF"/>
+  <circle cx="100" cy="150" r="15" fill="#FFFFFF"/>
+  <circle cx="140" cy="150" r="15" fill="#FFFFFF"/>
+  
+  <text x="55" y="157" font-family="Arial" font-size="20" fill="#E3000B">A</text>
+  <text x="95" y="157" font-family="Arial" font-size="20" fill="#E3000B">B</text>
+  <text x="135" y="157" font-family="Arial" font-size="20" fill="#E3000B">C</text>
+</svg> 
