@@ -8,11 +8,11 @@ import {
   Modal,
   TextInput,
   Alert,
+  ImageBackground,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 
 import { RootStackParamList } from '../types';
@@ -115,9 +115,10 @@ const LeaderboardScreen = () => {
   );
 
   return (
-    <LinearGradient
-      colors={[COLORS.background, COLORS.primary]}
+    <ImageBackground
+      source={require('../../assets/metal_background.png')}
       style={styles.container}
+      resizeMode="cover"
     >
       <View style={styles.header}>
         <TouchableOpacity
@@ -162,7 +163,7 @@ const LeaderboardScreen = () => {
       />
 
       <RaffleModal />
-    </LinearGradient>
+    </ImageBackground>
   );
 };
 

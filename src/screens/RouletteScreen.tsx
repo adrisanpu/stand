@@ -6,6 +6,7 @@ import {
   Animated,
   TouchableOpacity,
   Dimensions,
+  ImageBackground,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -101,9 +102,10 @@ const RouletteScreen = () => {
   });
 
   return (
-    <LinearGradient
-      colors={[COLORS.background, COLORS.primary]}
+    <ImageBackground
+      source={require('../../assets/metal_background.png')}
       style={styles.container}
+      resizeMode="cover"
     >
       <View style={styles.header}>
         <Text style={styles.title}>Spin & Win!</Text>
@@ -166,7 +168,7 @@ const RouletteScreen = () => {
           style={styles.spinButton}
         />
       )}
-    </LinearGradient>
+    </ImageBackground>
   );
 };
 

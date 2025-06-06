@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Animated, ViewStyle } from 'react-native';
+import { View, Text, StyleSheet, Animated, ViewStyle, ImageBackground } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -28,7 +28,19 @@ const ResultsScreen = () => {
     }).start();
 
     saveScore();
+    markUserAsPlayed();
   }, []);
+
+  const markUserAsPlayed = async () => {
+    try {
+      const instagramHandle = await AsyncStorage.getItem('instagramHandle');
+      if (instagramHandle) {
+        await AsyncStorage.setItem(`played_${instagramHandle}`, 'true');
+      }
+    } catch (error) {
+      console.error('Error marking user as played:', error);
+    }
+  };
 
   const saveScore = async () => {
     try {
@@ -73,9 +85,10 @@ const ResultsScreen = () => {
   });
 
   return (
-    <LinearGradient
-      colors={[COLORS.background, COLORS.primary]}
+    <ImageBackground
+      source={require('../../assets/metal_background.png')}
       style={styles.container}
+      resizeMode="cover"
     >
       <Animated.View
         style={[
@@ -104,7 +117,7 @@ const ResultsScreen = () => {
           />
         </View>
       </Animated.View>
-    </LinearGradient>
+    </ImageBackground>
   );
 };
 

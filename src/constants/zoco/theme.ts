@@ -1,20 +1,22 @@
-// Example pastel colors based on the Zoco Salamandra logo
+// Updated style constants: metallic grey background and logo-inspired pastel palette
 export const COLORS = {
-  // Pulled from the "Zoco" text colors
-  primary: '#FF99CC',  // Pastel pink
-  secondary: '#99FF99', // Pastel green
-  accent: '#CC99FF',   // Pastel purple
-  
-  // Light blue background from the circle
-  background: '#B3E5FC', // or #ACE8FF, whichever you prefer
-  
+  // Metallic grey background
+  background: '#4F4F4F',
+
+  // Pastel palette from the Zoco logo
+  primary: '#FFB3C1',    // Pastel pink (Z)
+  secondary: '#B5EAD7',  // Pastel green (C)
+  accent: '#CC99FF',     // Pastel purple (final o)
+  highlight: '#FFF59D',  // Pastel yellow (first o)
+  info: '#AEEEEE',       // Light pastel blue (logo circle)
+
   white: '#FFFFFF',
   black: '#000000',
 
-  // Use a darker color for text so it’s readable on a light background
-  text: '#333333',
+  // On a dark metallic background, text stays white
+  text: '#FFFFFF',
 
-  // Keep error & success standard or change to brand-related if desired
+  // Standard error & success (can override if you want brand‐specific shades)
   error: '#FF3B30',
   success: '#34C759',
 };

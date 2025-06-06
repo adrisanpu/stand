@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text, TextInput, Alert, TouchableOpacity, Modal, ViewStyle } from 'react-native';
+import { View, StyleSheet, Text, TextInput, Alert, TouchableOpacity, Modal, ViewStyle, ImageBackground, Keyboard } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -57,47 +57,40 @@ const LoginScreen = () => {
   };
 
   const handleLogin = async () => {
-    // Reset error
-    setError('');
-
-    // Validate username
-    if (!username.trim()) {
+    if (!username) {
       setError('Please enter your Instagram username');
       return;
     }
 
-    if (!username.trim().match(/^[a-zA-Z0-9._]+$/)) {
-      setError('Invalid Instagram username format');
+    if (!age) {
+      setError('Please enter your age');
       return;
     }
 
-    // Validate age
-    const ageNum = parseInt(age);
-    if (!age || isNaN(ageNum) || ageNum < 18 || ageNum > 100) {
-      setError('Please enter a valid age (18-100)');
-      return;
-    }
-
-    const cleanUsername = username.trim();
-    const hasPlayed = await checkUserPlayed(cleanUsername);
-
-    if (hasPlayed) {
-      Alert.alert(
-        'Already Played',
-        'This user has already played the quiz. Each user can only play once!',
-        [{ text: 'OK' }]
-      );
-      setUsername('');
+    if (!gender) {
+      setError('Please select your gender');
       return;
     }
 
     try {
-      await AsyncStorage.setItem('instagramHandle', cleanUsername);
-      await addUserToPlayed(cleanUsername, { age: ageNum, gender });
+      // Check if user has already played
+      const hasPlayed = await AsyncStorage.getItem(`played_${username}`);
+      if (hasPlayed === 'true') {
+        Alert.alert(
+          'Already Played',
+          'You have already completed the quiz. Only one attempt is allowed per user.',
+          [{ text: 'OK' }]
+        );
+        return;
+      }
+
+      await AsyncStorage.setItem('instagramHandle', username);
+      await AsyncStorage.setItem('age', age);
+      await AsyncStorage.setItem('gender', gender);
       navigation.replace('Quiz');
     } catch (error) {
       console.error('Error saving user data:', error);
-      setError('Something went wrong. Please try again.');
+      setError('Failed to save user data. Please try again.');
     }
   };
 
@@ -200,9 +193,10 @@ const LoginScreen = () => {
   );
 
   return (
-    <LinearGradient
-      colors={[COLORS.background, COLORS.primary]}
+    <ImageBackground
+      source={require('../../assets/metal_background.png')}
       style={styles.container}
+      resizeMode="cover"
     >
       <View style={styles.header}>
         <TouchableOpacity
@@ -223,8 +217,6 @@ const LoginScreen = () => {
 
       <View style={styles.content}>
         <Logo size={200} />
-        <Text style={styles.title}>Zoco Salamandra Quiz</Text>
-        <Text style={styles.subtitle}>Test your knowledge and win prizes!</Text>
         
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Enter your Instagram username:</Text>
@@ -248,8 +240,14 @@ const LoginScreen = () => {
             placeholderTextColor={COLORS.white + '80'}
             value={age}
             onChangeText={setAge}
-            keyboardType="numeric"
+            keyboardType="number-pad"
             maxLength={3}
+            returnKeyType="done"
+            onSubmitEditing={() => {
+              // Dismiss keyboard when done is pressed
+              Keyboard.dismiss();
+            }}
+            blurOnSubmit={true}
           />
 
           <Text style={styles.label}>Gender:</Text>
@@ -270,7 +268,7 @@ const LoginScreen = () => {
           />
         </View>
       </View>
-    </LinearGradient>
+    </ImageBackground>
   );
 };
 

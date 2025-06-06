@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Animated, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -15,6 +15,7 @@ const QuizScreen = () => {
   const [score, setScore] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [timeLeft, setTimeLeft] = useState(30);
+  const [shouldNavigate, setShouldNavigate] = useState(false);
   const progressAnim = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
@@ -40,16 +41,22 @@ const QuizScreen = () => {
     }).start();
   }, [timeLeft]);
 
+  useEffect(() => {
+    if (shouldNavigate) {
+      navigation.navigate('Roulette', {
+        score,
+        totalQuestions: quizQuestions.length,
+      });
+    }
+  }, [shouldNavigate, score]);
+
   const handleTimeUp = () => {
     if (currentQuestionIndex < quizQuestions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setSelectedOption(null);
       setTimeLeft(30);
     } else {
-      navigation.navigate('Roulette', {
-        score,
-        totalQuestions: quizQuestions.length,
-      });
+      setShouldNavigate(true);
     }
   };
 
@@ -60,24 +67,24 @@ const QuizScreen = () => {
       setScore(score + 1);
     }
     
-    setTimeout(() => {
-      if (currentQuestionIndex < quizQuestions.length - 1) {
+    if (currentQuestionIndex < quizQuestions.length - 1) {
+      setTimeout(() => {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
         setSelectedOption(null);
         setTimeLeft(30);
-      } else {
-        navigation.navigate('Roulette', {
-          score,
-          totalQuestions: quizQuestions.length,
-        });
-      }
-    }, 1000);
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        setShouldNavigate(true);
+      }, 1000);
+    }
   };
 
   return (
-    <LinearGradient
-      colors={[COLORS.background, COLORS.primary]}
+    <ImageBackground
+      source={require('../../assets/metal_background.png')}
       style={styles.container}
+      resizeMode="cover"
     >
       <View style={styles.header}>
         <Text style={styles.questionCount}>
@@ -125,7 +132,7 @@ const QuizScreen = () => {
           </TouchableOpacity>
         ))}
       </View>
-    </LinearGradient>
+    </ImageBackground>
   );
 };
 

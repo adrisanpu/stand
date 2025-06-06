@@ -6,6 +6,7 @@ import {
   Animated,
   TouchableOpacity,
   Alert,
+  ImageBackground,
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -141,9 +142,10 @@ const RaffleScreen = () => {
   };
 
   return (
-    <LinearGradient
-      colors={[COLORS.background, COLORS.primary]}
+    <ImageBackground
+      source={require('../../assets/metal_background.png')}
       style={styles.container}
+      resizeMode="cover"
     >
       <View style={styles.content}>
         <Text style={styles.title}>
@@ -178,7 +180,7 @@ const RaffleScreen = () => {
           </View>
         )}
       </View>
-    </LinearGradient>
+    </ImageBackground>
   );
 };
 
