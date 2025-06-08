@@ -17,7 +17,7 @@ const ResultsScreen = () => {
   const { score, totalQuestions } = route.params as { score: number; totalQuestions: number };
   
   const [scaleAnim] = useState(new Animated.Value(0));
-  const percentage = (score / totalQuestions) * 100;
+  const percentage = Math.round((score / totalQuestions) * 100 * 10) / 10;
 
   useEffect(() => {
     Animated.spring(scaleAnim, {
