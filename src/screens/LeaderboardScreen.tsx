@@ -195,14 +195,14 @@ const styles = StyleSheet.create({
     padding: SIZES.base,
     marginHorizontal: SIZES.padding,
     marginVertical: SIZES.base / 4,
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: COLORS.white,
     borderRadius: SIZES.base,
   },
   topThree: {
-    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+    backgroundColor: COLORS.white,
   },
   firstPlace: {
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: COLORS.white,
   },
   rankContainer: {
     width: 32,
@@ -210,21 +210,21 @@ const styles = StyleSheet.create({
   },
   rank: {
     fontSize: SIZES.medium,
-    color: COLORS.white,
+    color: COLORS.black,
   },
   topRank: {
     fontSize: SIZES.large,
   },
   usernameBucket: {
     flex: 1,
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: COLORS.white,
     borderRadius: SIZES.base,
     padding: SIZES.base / 2,
     marginHorizontal: SIZES.base,
   },
   username: {
     fontSize: SIZES.medium,
-    color: COLORS.white,
+    color: COLORS.black,
     fontWeight: '600',
   },
   scoreContainer: {
@@ -233,7 +233,7 @@ const styles = StyleSheet.create({
   },
   score: {
     fontSize: SIZES.medium,
-    color: COLORS.white,
+    color: COLORS.black,
     fontWeight: 'bold',
   },
   topScore: {

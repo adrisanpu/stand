@@ -5,6 +5,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
+import { FONTS } from '../constants/zoco/theme';
 
 import { RootStackParamList } from '../types';
 import { COLORS, SIZES } from '../constants/zoco/theme';
@@ -315,15 +316,15 @@ const styles = StyleSheet.create({
     marginTop: SIZES.padding,
   },
   input: {
-    width: '100%',
-    height: 50,
-    backgroundColor: COLORS.white + '20',
+    backgroundColor: COLORS.white,
     borderRadius: SIZES.base,
-    paddingHorizontal: SIZES.padding,
-    fontSize: SIZES.medium,
-    color: COLORS.white,
+    padding: SIZES.base,
+    color: COLORS.black,
+    fontSize: SIZES.font,
+    marginBottom: SIZES.padding,
     borderWidth: 1,
-    borderColor: COLORS.white + '40',
+    borderColor: COLORS.white,
+    height: 40,
   },
   errorText: {
     color: COLORS.error,
@@ -357,21 +358,24 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: SIZES.base,
     borderRadius: SIZES.base,
-    borderWidth: 1,
-    borderColor: COLORS.white + '40',
-    backgroundColor: COLORS.white + '10',
+    backgroundColor: COLORS.white,
+    marginHorizontal: SIZES.base / 2,
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: COLORS.white,
+    height: 40,
   },
   genderButtonSelected: {
-    backgroundColor: COLORS.accent + '20',
+    backgroundColor: COLORS.accent,
     borderColor: COLORS.accent,
   },
   genderButtonText: {
-    color: COLORS.white,
-    fontSize: SIZES.small,
+    color: COLORS.black,
+    fontSize: SIZES.font,
+    fontFamily: FONTS.medium,
   },
   genderButtonTextSelected: {
-    color: COLORS.accent,
+    color: COLORS.white,
   },
   settingsButton: {
     position: 'absolute',
