@@ -63,21 +63,20 @@ const QuizScreen = () => {
   const handleAnswer = (selectedIndex: number) => {
     setSelectedOption(selectedIndex);
     
-    if (selectedIndex === quizQuestions[currentQuestionIndex].correctAnswer) {
+    const currentQuestion = quizQuestions[currentQuestionIndex];
+    if (currentQuestion.correctAnswer === 0 || (selectedIndex + 1) === currentQuestion.correctAnswer) {
       setScore(score + 1);
     }
     
-    if (currentQuestionIndex < quizQuestions.length - 1) {
-      setTimeout(() => {
+    setTimeout(() => {
+      if (currentQuestionIndex < quizQuestions.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
         setSelectedOption(null);
         setTimeLeft(30);
-      }, 1000);
-    } else {
-      setTimeout(() => {
+      } else {
         setShouldNavigate(true);
-      }, 1000);
-    }
+      }
+    }, 1000);
   };
 
   return (
@@ -119,16 +118,26 @@ const QuizScreen = () => {
             style={[
               styles.optionButton,
               selectedOption === index && 
-                index === quizQuestions[currentQuestionIndex].correctAnswer && 
+                (quizQuestions[currentQuestionIndex].correctAnswer === 0 || 
+                 (index + 1) === quizQuestions[currentQuestionIndex].correctAnswer) && 
                 { backgroundColor: COLORS.success },
               selectedOption === index && 
-                index !== quizQuestions[currentQuestionIndex].correctAnswer && 
+                quizQuestions[currentQuestionIndex].correctAnswer !== 0 &&
+                (index + 1) !== quizQuestions[currentQuestionIndex].correctAnswer && 
                 { backgroundColor: COLORS.error },
             ]}
             onPress={() => handleAnswer(index)}
             disabled={selectedOption !== null}
           >
-            <Text style={styles.optionText}>{option}</Text>
+            <Text style={[
+              styles.optionText,
+              selectedOption === index && 
+                (quizQuestions[currentQuestionIndex].correctAnswer === 0 || 
+                 (index + 1) === quizQuestions[currentQuestionIndex].correctAnswer) && 
+                { color: COLORS.white }
+            ]}>
+              {option}
+            </Text>
           </TouchableOpacity>
         ))}
       </View>
@@ -158,13 +167,13 @@ const styles = StyleSheet.create({
   timerBar: {
     width: '100%',
     height: 8,
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.secondary + '40',
     borderRadius: 4,
     overflow: 'hidden',
   },
   timerProgress: {
     height: '100%',
-    backgroundColor: COLORS.accent,
+    backgroundColor: COLORS.primary,
   },
   timerText: {
     fontSize: SIZES.font,
@@ -178,6 +187,9 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.bold,
     marginBottom: SIZES.padding * 2,
     textAlign: 'center',
+    backgroundColor: COLORS.accent,
+    padding: SIZES.padding,
+    borderRadius: SIZES.base,
   },
   optionsContainer: {
     width: '100%',
@@ -191,8 +203,8 @@ const styles = StyleSheet.create({
   },
   optionText: {
     fontSize: SIZES.font,
-    color: COLORS.white,
-    fontFamily: FONTS.medium,
+    color: COLORS.black,
+    fontFamily: FONTS.bold,
     textAlign: 'center',
   },
 });
